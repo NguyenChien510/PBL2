@@ -10,9 +10,9 @@ Accounts::Accounts(string username,string password,bool role)
 
 Accounts::Accounts() {}
 
-void Accounts::readFromFile(string filename,vector<Accounts>& listacc)
+void Accounts::ReadFromFile()
 {
-	ifstream filein(filename);
+	ifstream filein("Accounts.txt");
 	if(filein.is_open())
 	{
 		string user,pass;
@@ -22,28 +22,15 @@ void Accounts::readFromFile(string filename,vector<Accounts>& listacc)
 			getline(filein,user,';');
 			getline(filein,pass,';');
 			filein>>role;
-			filein.ignore();
 			Accounts acc(user,pass,role);
 			listacc.push_back(acc);
 		}
 		filein.close();
 	}
-	else cout << "Cannot open file" << filename << endl;
+	else cout << "Cannot open file Accounts.txt" << endl;
 }
 
-void Accounts::Display(vector<Accounts>& listacc)
-{
-	for (int i = 0; i < listacc.size(); ++i)
-	{
-		cout << "Account " << i + 1 << ":" << endl;
-		cout << "Username : " << listacc[i].username << endl;
-		cout << "Password : " << listacc[i].password << endl;
-		cout << "Role     : " << (listacc[i].role ? "Admin" : "User") << endl;
-		cout << "-------------------" << endl;
-	}
-}
-
-void adminInterface()
+void AdminInterface()
 {
 	cout << "-------------- QUAN LI BAI DO XE ---------------"<<endl;
 	cout << "*               1.Them ve moi                  *"<<endl;
@@ -57,7 +44,7 @@ void adminInterface()
 	cout << "Nhap lua chon : ";
 }
 
-void userInterface()
+void UserInterface()
 {
 	cout << "-------------- CHUC NANG ----------------------"<<endl;
 	cout << "*               1.Dat ve                      *"<<endl;
@@ -70,29 +57,30 @@ void userInterface()
 	cout <<"Nhap lua chon : ";
 }
 
-bool Accounts::Login(vector<Accounts>& listacc)
+bool Accounts::Login()
 {
+	ReadFromFile();
 	string user,pass;
 	while(true)
 	{
 	cout << "Username : ";getline(cin,user);
 	cout << "Password : ";getline(cin,pass);
-	for(int i = 0 ; i < listacc.size();++i)
+	for(auto acc : listacc)
 	{
-		if(listacc[i].username == user && listacc[i].password == pass)
+		if(acc.username == user && acc.password == pass)
 		{
 			cout << "Login Success!!!!" << endl;
-			if(listacc[i].role = 1)
+			if(acc.role)
 			{
-				adminInterface();
+				AdminInterface();
 			}
 			else
 			{
-				userInterface();
+				UserInterface();
 			}
 			return true; 
 		}
 	}
-	cout << "Invalid username or password!!!!" << endl << endl << endl;
+	cout << "Invalid username or password!!!!" << endl << endl;
 	}
 }

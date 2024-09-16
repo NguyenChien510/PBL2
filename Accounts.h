@@ -8,11 +8,11 @@ class Accounts
 		string username;
 		string password;
 		bool role;
+		vector<Accounts>listacc;
 	public:
 		Accounts();
 		Accounts(string,string,bool);
-		void readFromFile(string,vector<Accounts>&);
-		void Display(vector<Accounts>&);
-		bool Login(vector<Accounts>&);	
+		void ReadFromFile();
+		bool Login();	
 };
 
