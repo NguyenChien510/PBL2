@@ -43,6 +43,8 @@ void Accounts::Display(vector<Accounts>& listacc)
 	}
 }
 
+
+
 bool Accounts::Login(vector<Accounts>& listacc)
 {
 	string user,pass;
@@ -54,8 +56,15 @@ bool Accounts::Login(vector<Accounts>& listacc)
 	{
 		if(listacc[i].username == user && listacc[i].password == pass)
 		{
-			cout << "Login Success" << endl;
-			cout << "Welcome!! " << listacc[i].username << endl;
+			cout << "Login Success!!!!" << endl;
+			if(listacc[i].role = 0)
+			{
+				
+			}
+			else
+			{
+				
+			}
 			return true; 
 		}
 	}
