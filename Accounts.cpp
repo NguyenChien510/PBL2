@@ -43,7 +43,32 @@ void Accounts::Display(vector<Accounts>& listacc)
 	}
 }
 
+void adminInterface()
+{
+	cout << "-------------- QUAN LI BAI DO XE ---------------"<<endl;
+	cout << "*               1.Them ve moi                  *"<<endl;
+	cout << "*               2.Xem danh sach bai do         *"<<endl;
+	cout << "*               3.Chinh sua ve                 *"<<endl;
+	cout << "*               4.Xoa ve                       *"<<endl;
+	cout << "*               5.Thong ke                     *"<<endl;
+	cout << "*               6.Dang xuat                    *"<<endl;
+	cout << "*               7.Thoat                        *"<<endl;
+	cout << "------------------------------------------------"<<endl;
+	cout << "Nhap lua chon : ";
+}
 
+void userInterface()
+{
+	cout << "-------------- CHUC NANG ----------------------"<<endl;
+	cout << "*               1.Dat ve                      *"<<endl;
+	cout << "*               2.Xem ve                      *"<<endl;
+	cout << "*               3.Chinh sua                   *"<<endl;
+	cout << "*               4.Dang xuat                   *"<<endl;
+	cout << "*               5.Thoat                       *"<<endl;
+	cout << "LUU Y : Moi user chi dang ki toi da 3 ve!!!!!!!"<<endl;
+	cout << "-----------------------------------------------"<<endl;
+	cout <<"Nhap lua chon : ";
+}
 
 bool Accounts::Login(vector<Accounts>& listacc)
 {
