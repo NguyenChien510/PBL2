@@ -82,13 +82,13 @@ bool Accounts::Login(vector<Accounts>& listacc)
 		if(listacc[i].username == user && listacc[i].password == pass)
 		{
 			cout << "Login Success!!!!" << endl;
-			if(listacc[i].role = 0)
+			if(listacc[i].role = 1)
 			{
-				
+				adminInterface();
 			}
 			else
 			{
-				
+				userInterface();
 			}
 			return true; 
 		}
