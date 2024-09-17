@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <conio.h>
+#include "Registrations.h"
 using namespace std;
 class Accounts
 {
@@ -14,5 +16,6 @@ class Accounts
 		Accounts(string,string,bool);
 		void ReadFromFile();
 		bool Login();	
+		int checkinput(string); 
 };
 

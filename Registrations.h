@@ -8,8 +8,11 @@ class Registrations : public ParkingLots, public Vehicles
 		int TicketPrice;
 		string StartTime;
 		string EndTime;
+		string OwnerID;
+		string LicensePlate;
+		string LotID;
 		vector<Registrations> listregis;
 	public:
-		Registrations(string,short,int,string,string);
+		Registrations(string,string,string,string,short,int,string,string);
 		void ReadFromFile();
 };

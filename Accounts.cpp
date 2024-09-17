@@ -57,6 +57,14 @@ void UserInterface()
 	cout <<"Nhap lua chon : ";
 }
 
+int	Accounts::checkinput(string s){
+	for(char c:s){
+		if(!isdigit(c)) return -1;
+	}
+	if(s=="") return -1;
+	else
+	return stoi(s);
+}
 bool Accounts::Login()
 {
 	ReadFromFile();
@@ -72,7 +80,30 @@ bool Accounts::Login()
 			cout << "Login Success!!!!" << endl;
 			if(acc.role)
 			{
-				AdminInterface();
+				string option;
+				while(1)
+				{
+					AdminInterface();
+					getline(cin,option);
+					int check = checkinput(option);
+					system("cls");
+					switch(check)
+					{
+						case 1:
+							cout << "------ TAO VE MOI ------"<<endl;
+							
+							break;
+						case 2:
+							cout << "------ DANH SANH ------"<<endl;
+							ParkingLots pl;
+							pl.Show();
+							cout <<endl<<endl<<"BAM PHIM BAT KI DE QUAY TRO LAI....."<<endl;
+                    		_getch();
+                    		system("cls");
+							break;
+						
+					}
+				}
 			}
 			else
 			{

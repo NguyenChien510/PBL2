@@ -11,7 +11,9 @@ class ParkingLots
 		bool Status; // 0 = empty
 		vector<ParkingLots>listpark;
 	public:
+		ParkingLots();
 		ParkingLots(string,char,bool);
-		void readFromFile();
+		void ReadFromFile();
 		string GetLotID();	
+		void Show();
 };
