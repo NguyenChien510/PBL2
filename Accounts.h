@@ -4,7 +4,7 @@
 #include <conio.h>
 #include "Registrations.h"
 using namespace std;
-class Accounts
+class Accounts : public ParkingLots
 {
 	private:
 		string username;
@@ -18,4 +18,3 @@ class Accounts
 		bool Login();	
 		int checkinput(string); 
 };
-
