@@ -126,11 +126,18 @@ bool Accounts::Login()
 							cout << "Chon loai ve: "<<endl;
 							getline(cin,option);
 							int check = checkinput(option);
-							ParkingLots pl;
+							ParkingLots pl;string pickLotID;
 							switch(check)
 							{
 								case 1:{
 									pl.Show(1);
+									cout << "Nhap LotID can dat : ";getline(cin,pickLotID);
+									for(auto park : listpark){
+										if(park.GetLotID() == pickLotID && park.GetStatus()==0){
+											cout << "Hello"<<endl;
+											park.SetStatus(1);
+										}
+									}									
 									break;
 								}
 								case 2:{
