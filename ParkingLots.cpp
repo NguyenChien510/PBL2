@@ -36,39 +36,49 @@ string ParkingLots::GetLotID()
 {
 	return this->LotID;
 }
-
+bool ParkingLots::GetStatus()
+{
+	return this->Status;
+}
+void ParkingLots::SetStatus(bool x)
+{
+	Status = x;
+}
 void ParkingLots::Show(int option)
 {
 	switch(option)
 	{
 		case 1:
-				for(auto park:listpark)
+			for(auto park:listpark)
 		{
-			if(park.Area == 'C')
+			if(park.Area == 'C'){
 			cout << "LotID : " << park.LotID << endl;
 			cout << "Area  : " << park.Area  << endl;
 			cout << "Status: " << ((park.Status) ? "ORDER" : "EMPTY") << endl;
 			cout << "-------------------"<<endl;
+			}
 		}
 			break;
 		case 2:
-						for(auto park:listpark)
+			for(auto park:listpark)
 		{
-			if(park.Area == 'B')
+			if(park.Area == 'B'){
 			cout << "LotID : " << park.LotID << endl;
 			cout << "Area  : " << park.Area  << endl;
 			cout << "Status: " << ((park.Status) ? "ORDER" : "EMPTY") << endl;
 			cout << "-------------------"<<endl;
+			}
 		}
 			break;
 		case 3:
-							for(auto park:listpark)
+			for(auto park:listpark)
 		{
-			if(park.Area == 'A')
+			if(park.Area == 'A'){
 			cout << "LotID : " << park.LotID << endl;
 			cout << "Area  : " << park.Area  << endl;
 			cout << "Status: " << ((park.Status) ? "ORDER" : "EMPTY") << endl;
 			cout << "-------------------"<<endl;
+			}
 		}
 			break;
 		case 4:
@@ -84,4 +94,3 @@ void ParkingLots::Show(int option)
 	}
 
 }
-
