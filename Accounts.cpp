@@ -22,6 +22,7 @@ void Accounts::ReadFromFile()
 			getline(filein,user,';');
 			getline(filein,pass,';');
 			filein>>role;
+			filein.ignore();
 			Accounts acc(user,pass,role);
 			listacc.push_back(acc);
 		}
@@ -75,11 +76,9 @@ bool Accounts::Login()
 	cout << "Password : ";getline(cin,pass);
 	for(auto acc : listacc)
 	{
-		if(acc.username == user && acc.password == pass)
+		if(acc.username == user && acc.password == pass && acc.role == 1)
 		{
 			cout << "Login Success!!!!" << endl;
-			if(acc.role)
-			{
 				string option;
 				while(1)
 				{
@@ -96,7 +95,7 @@ bool Accounts::Login()
 						case 2:
 							cout << "------ DANH SANH ------"<<endl;
 							ParkingLots pl;
-							pl.Show();
+							pl.Show(4);
 							cout <<endl<<endl<<"BAM PHIM BAT KI DE QUAY TRO LAI....."<<endl;
                     		_getch();
                     		system("cls");
@@ -104,14 +103,47 @@ bool Accounts::Login()
 						
 					}
 				}
+				return true;
 			}
-			else
+			else if(acc.username == user && acc.password == pass && acc.role == 0)
 			{
-				UserInterface();
+				cout << "Login Success!!!!" << endl;
+				string option;
+				while(1)
+				{
+					UserInterface();
+					getline(cin,option);
+					int check = checkinput(option);
+					system("cls");
+					switch(check)
+					{
+						case 1:
+							string option;
+							cout << "-------- DAT VE ------------"<<endl;
+							cout << "Chon loai ve:"<<endl;
+							cout << "1.Ngay"<<endl;
+							cout << "2.Tuan"<<endl;
+							cout << "3.Thang"<<endl;
+							cout << "Chon loai ve: "<<endl;
+							getline(cin,option);
+							int check = checkinput(option);
+							ParkingLots pl;
+							switch(check)
+							{
+								case 1:
+									pl.Show(1);
+									break;
+								case 2:
+									pl.Show(2);
+								case 3:
+									pl.Show(3);
+							}
+							break;
+					}
+				}
+				
 			}
-			return true; 
 		}
-	}
-	cout << "Invalid username or password!!!!" << endl << endl;
+		cout << "Invalid username or password!!!"<<endl;
 	}
 }

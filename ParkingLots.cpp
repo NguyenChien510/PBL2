@@ -37,15 +37,51 @@ string ParkingLots::GetLotID()
 	return this->LotID;
 }
 
-void ParkingLots::Show()
+void ParkingLots::Show(int option)
 {
-	for(auto park:listpark)
+	switch(option)
 	{
-	cout << "LotID : " << park.LotID << endl;
-	cout << "Area  : " << park.Area  << endl;
-	cout << "Status: " << ((park.Status) ? "ORDER" : "EMPTY") << endl;
-	cout << "-------------------"<<endl;
+		case 1:
+				for(auto park:listpark)
+		{
+			if(park.Area == 'C')
+			cout << "LotID : " << park.LotID << endl;
+			cout << "Area  : " << park.Area  << endl;
+			cout << "Status: " << ((park.Status) ? "ORDER" : "EMPTY") << endl;
+			cout << "-------------------"<<endl;
+		}
+			break;
+		case 2:
+						for(auto park:listpark)
+		{
+			if(park.Area == 'B')
+			cout << "LotID : " << park.LotID << endl;
+			cout << "Area  : " << park.Area  << endl;
+			cout << "Status: " << ((park.Status) ? "ORDER" : "EMPTY") << endl;
+			cout << "-------------------"<<endl;
+		}
+			break;
+		case 3:
+							for(auto park:listpark)
+		{
+			if(park.Area == 'A')
+			cout << "LotID : " << park.LotID << endl;
+			cout << "Area  : " << park.Area  << endl;
+			cout << "Status: " << ((park.Status) ? "ORDER" : "EMPTY") << endl;
+			cout << "-------------------"<<endl;
+		}
+			break;
+		case 4:
+			for(auto park:listpark)
+		{
+			cout << "LotID : " << park.LotID << endl;
+			cout << "Area  : " << park.Area  << endl;
+			cout << "Status: " << ((park.Status) ? "ORDER" : "EMPTY") << endl;
+			cout << "-------------------"<<endl;
+		}
+			cout << "Nhap LotID can xem : ";
+			break;
 	}
-	cout << "Nhap LotID can xem : ";
+
 }
 

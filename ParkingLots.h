@@ -15,5 +15,5 @@ class ParkingLots
 		ParkingLots(string,char,bool);
 		void ReadFromFile();
 		string GetLotID();	
-		void Show();
+		void Show(int);
 };
