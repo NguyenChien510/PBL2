@@ -123,14 +123,15 @@ bool Accounts::Login()
 							cout << "1.Ngay"<<endl;
 							cout << "2.Tuan"<<endl;
 							cout << "3.Thang"<<endl;
-							cout << "Chon loai ve: "<<endl;
+							cout << "Chon loai ve: ";
 							getline(cin,option);
 							int check = checkinput(option);
 							ParkingLots pl;string pickLotID;
 							switch(check)
 							{
 								case 1:{
-									pl.Show(1);
+									cout << "---------------------"<<endl;
+									pl.Show(1);							
 									cout << "Nhap LotID can dat : ";getline(cin,pickLotID);
 									for(auto park : listpark){
 										if(park.GetLotID() == pickLotID && park.GetStatus()==0){
