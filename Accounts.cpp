@@ -103,7 +103,6 @@ bool Accounts::Login()
 						
 					}
 				}
-				return true;
 			}
 			else if(acc.username == user && acc.password == pass && acc.role == 0)
 			{
@@ -117,7 +116,7 @@ bool Accounts::Login()
 					system("cls");
 					switch(check)
 					{
-						case 1:
+						case 1:{
 							string option;
 							cout << "-------- DAT VE ------------"<<endl;
 							cout << "Chon loai ve:"<<endl;
@@ -130,15 +129,20 @@ bool Accounts::Login()
 							ParkingLots pl;
 							switch(check)
 							{
-								case 1:
+								case 1:{
 									pl.Show(1);
 									break;
-								case 2:
+								}
+								case 2:{
 									pl.Show(2);
-								case 3:
+									break;
+								}
+								case 3:{
 									pl.Show(3);
+									break;
+								}
 							}
-							break;
+						}		
 					}
 				}
 				
