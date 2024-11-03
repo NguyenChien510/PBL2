@@ -1,3 +1,61 @@
-C989;102230061;43A-12345;002;2;19:53 16-09-2024;19:53 17-10-2024
-A002;102230062;92A-99999;989;0;12:39 16-09-2024;12:39 17-09-2024
-B123;102230091;74A-01234;123;1;05:16 16-09-2024;05:16 23-09-2024
+
+void Registrations::PrintRegistrationDetails(const Registrations& rg,Vehicles veh) {
+        cout << setw(15) << rg.RegistrationID << " | "
+             << setw(10) << rg.OwnerID << " | "
+             << setw(6) << rg.LotID << " | "
+             << setw(15) << rg.LicensePlate << " | "
+             << setw(10) << veh.GetBrand() << " | "
+             << setw(10) << veh.GetModel() << " | "
+             << setw(7) << veh.GetColor() << " | "
+             << setw(11) << ((rg.TicketType == 1) ? "DAILY" : (rg.TicketType == 2 ? "WEEKLY" : "MONTHLY")) << " | "
+             << setw(7) << rg.TicketPrice << " | "
+             << setw(15) << rg.StartTime << endl;
+//	else {
+//        cout << "--------------------------------------" << endl;
+//        cout << "Registration ID : " << rg.RegistrationID << endl;
+//        cout << "Owner ID        : " << rg.OwnerID << endl;
+//        cout << "Lot ID          : " << rg.LotID << endl;
+//        cout << "License Plate   : " << rg.LicensePlate << endl;
+//        cout << "Brand           : " << veh.GetBrand() << endl;
+//        cout << "Model           : " << veh.GetModel() << endl;
+//        cout << "Color           : " << veh.GetColor() << endl;
+//        cout << "Ticket Type     : " << ((rg.TicketType == 1) ? "DAILY" : (rg.TicketType == 2 ? "WEEKLY" : "MONTHLY")) << endl;
+//        cout << "Price           : " << rg.TicketPrice << endl;
+//        cout << "Start Time      : " << rg.StartTime << endl;
+//        cout << "--------------------------------------" << endl;
+//    }
+}
+
+void Registrations::Show(string user,bool role) {
+    // Map for quick vehicle lookup by license plate
+    Vehicles::ReadFromFile();
+    map<string, Vehicles> vehicleMap;
+    for (auto& veh : listveh) {
+        vehicleMap[veh.GetLicensePlate()] = veh;
+    }
+    cout << setw(15) << "Registration ID" << " | "
+             << setw(10) << "Owner ID" << " | "
+             << setw(5) << "Lot ID" << " | "
+             << setw(15) << "License Plate" << " | "
+             << setw(10) << "Brand" << " | "
+             << setw(10) << "Model" << " | "
+             << setw(7) << "Color" << " | "
+             << setw(10) << "Ticket Type" << " | "
+             << setw(7) << "Price" << " | "
+             << setw(15) << "Start Time" << endl;
+        cout << setfill('-') << setw(134) << "-" << setfill(' ') << endl;
+    if (role == 1) {
+        for (auto rg : listregis) {
+            if (vehicleMap.find(rg.LicensePlate) != vehicleMap.end()) {
+                PrintRegistrationDetails(rg, vehicleMap[rg.LicensePlate]);
+            }
+        }
+    }
+    else {
+        for (auto rg : listregis) {
+            if (rg.OwnerID == user && vehicleMap.find(rg.LicensePlate) != vehicleMap.end()) {
+                PrintRegistrationDetails(rg, vehicleMap[rg.LicensePlate]);
+            }
+        }
+    }
+}
